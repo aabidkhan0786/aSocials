@@ -18,6 +18,10 @@ app.use(cors())
 // app.use(express.urlencoded({limit: '500mb', extended: true, parameterLimit:10000}));
 app.use(express.json({ limit: '10mb' })); // Change '10mb' to your desired limit
 
+app.get("/",(req,res)=>{
+    res.json("Weldome to AAK aSoci@ls!!")
+})
+
 app.use("/aak/auth",authRouter)
 app.use("/aak/user",userRouter)
 app.use("/aak/posts",postRouter)
