@@ -28,7 +28,7 @@ const MyProfile = () => {
   useEffect(() => {
     const getUserByUsername = async () => {
       const userProfile = await axios.get(
-        `/aak/user/find?username=${username}`
+        `https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user/find?username=${username}`
       );
       console.log(userProfile);
       setProfile(userProfile);
@@ -95,10 +95,10 @@ const MyProfile = () => {
                 </div>
                 <div className="">
                   <button className="btn mx-2" onClick={handleEdit}>
-                    <i class="fa-solid fa-image-portrait"></i>
+                    <i className="fa-solid fa-image-portrait"></i>
                   </button>
                   <button className="btn" onClick={() => setPicName("")}>
-                    <i class="fa-solid fa-ban"></i>
+                    <i className="fa-solid fa-ban"></i>
                   </button>
                 </div>
               </div>
@@ -187,21 +187,21 @@ const MyProfile = () => {
                     <div className="d-flex justify-content-between">
                       <div className="">
                         <p className="px-2 text-capitalize">
-                          <i class="fa-solid fa-user"></i>
+                          <i className="fa-solid fa-user"></i>
                           {profile.data.username}
                         </p>
                         <p className="px-2">
-                          <i class="fa-solid fa-at"></i>
+                          <i className="fa-solid fa-at"></i>
                           {profile.data.email}
                         </p>
                         <p className="px-2 text-capitalize">
-                          <i class="fa-solid fa-location-dot"></i>
+                          <i className="fa-solid fa-location-dot"></i>
                           {profile.data.city}
                         </p>
                       </div>
                       <div className="mt-3 ">
-                        <blockquote class="blockquote">
-                          <footer class="blockquote-footer">
+                        <blockquote className="blockquote">
+                          <footer className="blockquote-footer">
                             {profile.data.desc}
                           </footer>
                         </blockquote>
@@ -211,7 +211,7 @@ const MyProfile = () => {
                       data?.data._id === profile?.data._id ? (
                         <div className="btns ms-auto">
                           <button className="btn" onClick={() => setEdit(true)}>
-                            <i class="fa-solid fa-user-pen"></i>
+                            <i className="fa-solid fa-user-pen"></i>
                           </button>
                         </div>
                       ) : (
@@ -244,24 +244,24 @@ const MyProfile = () => {
               ) : (
                 <>
                   <div
-                    class="card"
+                    className="card"
                     aria-hidden="true"
                     style={{ background: "transparent" }}
                   >
-                    <img src={"loading"} class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 class="card-title placeholder-glow">
-                        <span class="placeholder col-6"></span>
+                    <img src={"loading"} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                      <h5 className="card-title placeholder-glow">
+                        <span className="placeholder col-6"></span>
                       </h5>
-                      <p class="card-text placeholder-glow">
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
+                      <p className="card-text placeholder-glow">
+                        <span className="placeholder col-7"></span>
+                        <span className="placeholder col-4"></span>
+                        <span className="placeholder col-4"></span>
+                        <span className="placeholder col-6"></span>
+                        <span className="placeholder col-8"></span>
                       </p>
                       <a
-                        class="btn btn-primary disabled placeholder col-6"
+                        className="btn btn-primary disabled placeholder col-6"
                         aria-disabled="true"
                       ></a>
                     </div>
@@ -279,21 +279,22 @@ const MyProfile = () => {
               </h5>
               <div className="d-flex m-4 w-100 px-3">
                 <div className="d-flex flex-column w-50">
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInputEmail"
                       placeholder="name@example.com"
                       value={email}
+                      disabled={true}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                     <label for="floatingInputEmail">Email address</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInputCap"
                       placeholder="name@example.com"
                       value={desc}
@@ -333,10 +334,10 @@ const MyProfile = () => {
                 </div>
 
                 <div className="d-flex flex-column w-50 px-3">
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInputPass"
                       placeholder="name@example.com"
                       value={password}
@@ -344,10 +345,10 @@ const MyProfile = () => {
                     />
                     <label for="floatingInputPass">Password</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="form-floating mb-3">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInputLoc"
                       placeholder="name@example.com"
                       value={loc}

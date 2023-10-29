@@ -1,18 +1,17 @@
 import React from "react";
 import Home from "./Components/Home";
 import "./index.css";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login";
 import MyProfile from "./Components/Pages/MyProfile";
-import { redirect } from "react-router-dom";
-// import PrivateRoute from "./privateRoute";
 import PrivateRoute from "./PrivateRoute.jsx";
 
 const App = () => {
-  const loggedIn = JSON.parse(localStorage.getItem("Profile"));
+  const loggedIn = JSON.parse(localStorage.getItem("Profile"))
   console.log(loggedIn);
-  // if(!loggedIn) return redirect("/login")
+  
+
 
   return (
     <>

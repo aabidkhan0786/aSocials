@@ -16,7 +16,7 @@ const Right_Sec = ({ posts, loggedUser,myPost }) => {
   useEffect(() => {
     const getUserByUsername = async () => {
       const userProfile = await axios.get(
-        `/aak/user/find?username=${loggedUser.user.username}`
+        `https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user/find?username=${loggedUser.user.username}`
       );
       setProfile(userProfile.data);
     };

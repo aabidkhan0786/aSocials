@@ -7,11 +7,10 @@ import Left_Sec from "./Sections/Left_Sec";
 import Middle_Sec from "./Sections/Middle_Sec";
 import Right_Sec from "./Sections/Right_Sec";
 import { findUser } from "../Redux/Actions/Users";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Home = () => {
-  const [explore,setExplore] = useState(false)
   const dispatch = useDispatch();
   const post = useSelector((state) => state.Post);
   const loggedUser = useSelector((state) => state.Auth);
@@ -19,6 +18,7 @@ const Home = () => {
   const [posts,setPosts] = useState([])
   const [myPost, setMyPost] = useState([]);
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(getMyTimeline(authUser.user._id))
@@ -45,6 +45,8 @@ const Home = () => {
       getMyposts();
     }
   }, [posts]);
+
+
 
   console.log({after_state:loggedUser});
   console.log({after_state_post:posts});

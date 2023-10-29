@@ -21,10 +21,11 @@ const Feed = ({ p, loggedUser }) => {
   const [del, setDel] = useState(false);
   const [caption, setCaption] = useState(p.desc);
 
-
   useEffect(() => {
     const findPostUser = async () => {
-      const res = await axios.get(`aak/user/find?userId=${p.userId}`);
+      const res = await axios.get(
+        `https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user/find?userId=${p.userId}`
+      );
       setPostUser(res.data);
     };
     findPostUser();
@@ -39,34 +40,35 @@ const Feed = ({ p, loggedUser }) => {
     dispatch(updatePost(postId, updateDetails));
     setEdit(false);
   };
+
   return (
     <div className="glass post_cover">
       <div className="d-flex justify-content-between p-2 ">
-        <Link to={`profile/${p.username}`}>
+        <Link to={`profile/${p?.username}`}>
           <div className="d-flex profile_tags justify-content-center place-items-center">
-            {postUser.profilepicture ? (
+            {postUser?.profilepicture ? (
               <img
-                src={postUser.profilepicture}
+                src={postUser?.profilepicture}
                 style={{ width: "40px", borderRadius: "50%" }}
                 loading="lazy"
                 alt="profile pic"
               />
             ) : (
-              <Avatar size="40" round={true} name={postUser.username} />
+              <Avatar size="40" round={true} name={postUser?.username} />
             )}
-            <p className="text-capitalize pt-2 px-2">{p.username}</p>
+            <p className="text-capitalize pt-2 px-2">{p?.username}</p>
           </div>
         </Link>
         <div>
-          <ReactTimeAgo date={p.createdAt} />
+          <ReactTimeAgo date={p?.createdAt} />
         </div>
       </div>
       <div>
-        {p.img === "" ? (
+        {p?.img === "" ? (
           ""
         ) : (
           <img
-            src={p.img}
+            src={p?.img}
             alt="pics"
             loading="lazy"
             className="img-fluid p-1"
@@ -90,27 +92,27 @@ const Feed = ({ p, loggedUser }) => {
           </button>
         </>
       ) : (
-        <p className="px-2">{p.desc}</p>
+        <p className="px-2">{p?.desc}</p>
       )}
 
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex">
-          {p.likes.includes(loggedUser.user._id) ? (
+          {p?.likes.includes(loggedUser?.user._id) ? (
             <i
-              class="fa-solid fa-heart p-2"
+              className="fa-solid fa-heart p-2"
               style={{ fontSize: "25px", color: "hotpink" }}
-              onClick={() => dispatch(likePost(p._id, loggedUser.user.userId))}
+              onClick={() => dispatch(likePost(p?._id, loggedUser?.user.userId))}
             ></i>
           ) : (
             <i
-              class="fa-regular fa-heart p-2"
+              className="fa-regular fa-heart p-2"
               style={{ fontSize: "25px" }}
-              onClick={() => dispatch(likePost(p._id, loggedUser.user.userId))}
+              onClick={() => dispatch(likePost(p?._id, loggedUser?.user.userId))}
             ></i>
           )}
 
           <p className="py-2">
-            {p.likes.length
+            {p?.likes.length
               ? p.likes.length > 1
                 ? `${p.likes.length} likes`
                 : `${p.likes.length} like`
@@ -118,35 +120,46 @@ const Feed = ({ p, loggedUser }) => {
           </p>
           {/* <i class="fa-regular fa-comment-dots"></i> */}
         </div>
-        {loggedUser.user._id === p.userId ? (
+        {loggedUser?.user._id === p.userId ? (
           <>
             <div className="">
               <button className="m-2 btn btn-sm ">
                 {edit ? (
                   <i
-                    class="fa-solid fa-xmark"
+                    className="fa-solid fa-xmark"
                     onClick={() => setEdit(false)}
                   ></i>
                 ) : (
                   <i
-                    class="fa-solid fa-pen-to-square"
+                    className="fa-solid fa-pen-to-square"
                     onClick={() => setEdit(true)}
                   ></i>
                 )}
               </button>
-              <button className="m-2 btn btn-sm " onClick={()=>setDel(true)} >
-                <i class="fa-solid fa-trash-can"  ></i>
+              <button className="m-2 btn btn-sm " onClick={() => setDel(true)}>
+                <i className="fa-solid fa-trash-can"></i>
               </button>
-              {del &&
-                <div className="flying_toast glass flex-column" >
-                  <p className="px-2 text-center">             
+              {del && (
+                <div className="flying_toast glass flex-column">
+                  <p className="px-2 text-center">
                     Are you sure, want to delete ?
-                    </p>
-                    <div  className="d-flex justify-content-between px-4" >
-                  <button className="btn btn-sm" onClick={()=>dispatch(deletePost(p._id))} ><i class="fa-solid fa-trash-can-arrow-up"></i></button>
-                  <button className="btn btn-sm" onClick={()=>setDel(false)} ><i class="fa-solid fa-ban"></i></button>
+                  </p>
+                  <div className="d-flex justify-content-between px-4">
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => dispatch(deletePost(p._id))}
+                    >
+                      <i className="fa-solid fa-trash-can-arrow-up"></i>
+                    </button>
+                    <button
+                      className="btn btn-sm"
+                      onClick={() => setDel(false)}
+                    >
+                      <i className="fa-solid fa-ban"></i>
+                    </button>
                   </div>
-                </div>}
+                </div>
+              )}
             </div>
           </>
         ) : (

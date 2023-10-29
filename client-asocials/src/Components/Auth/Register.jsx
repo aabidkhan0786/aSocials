@@ -11,8 +11,10 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const history = useNavigate();
+  const [loading,setLoading] = useState(false)
 
   const handleRegister = () => {
+    setLoading(true)
     if (password.length <= 6) {
       return alert("Password should be 6 character long!");
     }
@@ -25,6 +27,7 @@ const Register = () => {
       username,
     };
     dispatch(register(registerDetails, history));
+    setLoading(false)
   };
   return (
     <>
@@ -54,7 +57,7 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
-              class="btn  my-2"
+              className="btn  my-2"
               style={{ width: "80%" }}
               onClick={handleRegister}
             >
@@ -63,7 +66,9 @@ const Register = () => {
             <small className="my-3">
               Already enjoying aSoci@ls?{" "}
               <Link className="mx-1" to="/login">
-                Sign In
+                {
+                  loading ? "Signing in" : "Sign In"
+                }           
               </Link>
             </small>
           </div>

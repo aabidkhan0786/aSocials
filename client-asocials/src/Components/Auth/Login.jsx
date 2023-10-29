@@ -28,7 +28,7 @@ const Login = () => {
             <div className='box_2'>
                 <input type="text" className='input_text' placeholder='Enter email' onChange={(e)=>setEmail(e.target.value)} />
                 <input type="password" className='input_text' placeholder='Enter password' onChange={(e)=>setPassword(e.target.value)} />
-                <button class="btn my-2" style={{width:"80%"}} onClick={handleLogin}>Login</button>
+                <button className="btn my-2" style={{width:"80%"}} onClick={handleLogin}>Login</button>
                 <small className='my-3'>New to aSoci@ls? <Link className='mx-1' to="/register" >Sign Up</Link></small>
             </div>
         </div>

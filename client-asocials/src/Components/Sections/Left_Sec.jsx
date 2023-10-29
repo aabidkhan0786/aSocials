@@ -17,7 +17,7 @@ const Left_Sec = ({ loggedUser,myPost }) => {
 
   useEffect(() => {
     const getAllUser = async () => {
-      const user = await axios.get("/aak/user");
+      const user = await axios.get("https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user");
       setUser(user.data);
     };
     getAllUser();
@@ -25,14 +25,14 @@ const Left_Sec = ({ loggedUser,myPost }) => {
 
   const handleFollow = async (e, id) => {
     e.preventDefault();
-    const res = await axios.put(`/aak/user/${id}/follow`, {
+    const res = await axios.put(`https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user/${id}/follow`, {
       userId: loggedUser.user._id,
     });
     dispatch(followUser(id));
   };
   const handleUnfollow = async (e, id) => {
     e.preventDefault();
-    const res = await axios.put(`/aak/user/${id}/unfollow`, {
+    const res = await axios.put(`https://a-socials-server-jny7w6fuh-aabidkhan0786.vercel.app/aak/user/${id}/unfollow`, {
       userId: loggedUser.user._id,
     });
     dispatch(unFollowUser(id));

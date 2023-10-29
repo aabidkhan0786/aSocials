@@ -37,12 +37,10 @@ const Middle_Sec = ({ posts, loggedUser, myPost }) => {
       location: loc,
     };
     dispatch(createPosts(newPost));
-    setDesc("")
-    setFile("")
-    setPicName("")
+    setDesc("");
+    setFile("");
+    setPicName("");
   };
-
-  console.log({ posts });
 
   return (
     <>
@@ -50,31 +48,60 @@ const Middle_Sec = ({ posts, loggedUser, myPost }) => {
         className="d-flex justify-content-center flex-column"
         style={{ marginBottom: "68px" }}
       >
-<nav class="navbar small_nav  bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand logo" href="#">aSoci@ls</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title logo" id="offcanvasNavbarLabel">aSoci@ls</h5>
-        <button type="button" class="btn-close me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item d-flex">
-          <i class="fa-solid fa-user pt-2"></i><Link class="nav-link active pt-1 px-1" to={`profile/${loggedUser.user.username}`} state={{data:loggedUser.user}} aria-current="page" href="#">My Profile</Link>
-          </li>
-          <li class="nav-item">
-            <Left_Sec loggedUser={loggedUser} myPost={myPost} />
-          </li>
-        </ul>
-
-      </div>
-    </div>
-  </div>
-</nav>
+        <nav class="navbar small_nav  bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand logo" href="#">
+              aSoci@ls
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title logo" id="offcanvasNavbarLabel">
+                  aSoci@ls
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close me-3"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item d-flex">
+                    <i class="fa-solid fa-user pt-2"></i>
+                    <Link
+                      class="nav-link active pt-1 px-1"
+                      to={`profile/${loggedUser.user.username}`}
+                      state={{ data: loggedUser.user }}
+                      aria-current="page"
+                      href="#"
+                    >
+                      My Profile
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Left_Sec loggedUser={loggedUser} myPost={myPost} />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
         <div className="glass post_cover ">
           <center>
             <input
@@ -137,11 +164,12 @@ const Middle_Sec = ({ posts, loggedUser, myPost }) => {
               style={{ background: "transparent" }}
               className="d-flex card  flex-column justify-content-center"
             >
-              <p className="text-center pt-2" >Please add new friends/post to display  </p>
+              <p className="text-center pt-2">
+                Please add new friends/post to display{" "}
+              </p>
               <div>
-                
                 <Left_Sec loggedUser={loggedUser} myPost={myPost} />
-                </div>
+              </div>
               {/* <img src="..." class="card-img-top" alt="loading" />
               <div class="card-body">
                 <h5 class="card-title placeholder-glow">
