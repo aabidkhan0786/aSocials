@@ -9,18 +9,18 @@ const router = express.Router()
 //register new user
 router.post("/register", async (req,res)=>{
     try {
-        console.log(req.body);
-        const {email} = req.body
+        const {email,username} = req.body
         const existingUser = await Users.findOne({email})
+        const userName = await Users.findOne({username})
+        console.log(existingUser);
         if(existingUser){
-            res.status(403).json("User already exists!");
+            res.status(403).json({msg:"User already exists!"});
         }else{
             const newUser = new Users({
                 username:req.body.username,
                 email: req.body.email,
                 password: CryptoJS.AES.encrypt(req.body.password,process.env.HASH_KEY).toString()
             })
-
             const user = await newUser.save()
             console.log(user);
             const accesstoken = jwt.sign(
@@ -31,23 +31,19 @@ router.post("/register", async (req,res)=>{
                   process.env.JWT_KEY,
                   { expiresIn: "3d" }
                   );
-
-    
-            res.status(201).json({ user,accesstoken});
-
+            res.status(201).json({user,accesstoken});
         }
     } catch (error) {
-        res.status(500).json({ error });
+        res.status(500).json({msg: error.message });
     }
 })
-// login user
 
+// login user
 router.post("/login", async (req,res)=>{
     try {
-        console.log(req.body);
         const user = await Users.findOne({email:req.body.email});
         if(!user){
-            res.status(404).json("User not found!")
+            res.status(404).json({msg:"User not found!"})
         }else{
             const hashedpass = CryptoJS.AES.decrypt(
                 user.password,
@@ -55,7 +51,7 @@ router.post("/login", async (req,res)=>{
               );
               const password = hashedpass.toString(CryptoJS.enc.Utf8);
               if( password !== req.body.password){
-                res.status(401).json("Wrong Credentials!!");
+                res.status(401).json({msg:"Wrong Credentials!!"});
               }else{
                 const accesstoken = jwt.sign(
                     {
@@ -63,7 +59,7 @@ router.post("/login", async (req,res)=>{
                         email: user.email,
                       },
                       process.env.JWT_KEY,
-                      { expiresIn: "3d" }
+                      { expiresIn: "10d" }
                       );
                       console.log(accesstoken);
                   res.status(200).json({user,accesstoken});
@@ -72,11 +68,7 @@ router.post("/login", async (req,res)=>{
         }
     } catch (error) {
         console.log(error);
-        res.status(500).json(error);
+        res.status(500).json({msg: error.message });
     }
 })
-
-
-
-
 export default router;
