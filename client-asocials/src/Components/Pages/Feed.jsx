@@ -54,7 +54,7 @@ const Feed = ({ p, loggedUser }) => {
                 alt="profile pic"
               />
             ) : (
-              <Avatar size="40" round={true} name={postUser?.username} />
+              <Avatar size="40" round={true} name={p?.username} />
             )}
             <p className="text-capitalize pt-2 px-2">{p?.username}</p>
           </div>
