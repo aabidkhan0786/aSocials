@@ -6,31 +6,36 @@ import { logIn } from '../../Redux/Actions/Users';
 
 const Login = () => {
 
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
-    const dispatch = useDispatch()
-    const history = useNavigate()
-     const handleLogin=()=>{
-        const loginDetails ={
-            email,
-            password
-        }
-        dispatch(logIn(loginDetails,history))
-     }
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
+  const history = useNavigate()
+  const handleLogin = () => {
+    const loginDetails = {
+      email,
+      password
+    }
+    dispatch(logIn(loginDetails, history))
+  }
   return (
     <>
       <div className=' register_cover'>
         <div className='glass register_card'>
-            <div className='box_1'>
+          <div className='box_1'>
             <h2>aSoci@ls</h2>
             <p>Explore the beauty of people,place and things.</p>
+            <div className='stick_bottom px-1'>
+              <p>More By A.A.K:
+                <a href="https://vid-shot-aabidkhan0786.vercel.app/" className='mx-2' target='_blank'>
+                  <u>VidShot</u></a></p>
             </div>
-            <div className='box_2'>
-                <input type="text" className='input_text' placeholder='Enter email' onChange={(e)=>setEmail(e.target.value)} />
-                <input type="password" className='input_text' placeholder='Enter password' onChange={(e)=>setPassword(e.target.value)} />
-                <button className="btn my-2" style={{width:"80%"}} onClick={handleLogin}>Login</button>
-                <small className='my-3'>New to aSoci@ls? <Link className='mx-1' to="/register" >Sign Up</Link></small>
-            </div>
+          </div>
+          <div className='box_2'>
+            <input type="text" className='input_text' placeholder='Enter email' onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" className='input_text' placeholder='Enter password' onChange={(e) => setPassword(e.target.value)} />
+            <button className="btn my-2" style={{ width: "80%" }} onClick={handleLogin}>Login</button>
+            <small className='my-3'>New to aSoci@ls? <Link className='mx-1' to="/register" >Sign Up</Link></small>
+          </div>
         </div>
       </div>
     </>

@@ -11,7 +11,6 @@
 }
 
 /* FONTS: */
-
 .title{
     font-family: 'PT Serif', serif;
     font-weight: bold;
@@ -47,7 +46,6 @@ p{
   }
 
 .glass{
-    
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     /* box-shadow: 0 8px 32px 0 ; */
     backdrop-filter: blur(20px);
@@ -106,17 +104,19 @@ a{
     /* color:white; */
 }
 
-/* left section */
+.stick_bottom{
+    position: fixed;
+    bottom:0px;
+}
 
+/* left section */
 .left_sec{
     width:25vw;
 }
 
 .search_cover{
-    /* margin-top: 20px; */
     height: 40px;
     margin: 20px;
-    /* width:30px; */
     display: flex;
     justify-content: center;
     place-items: center;
@@ -130,10 +130,10 @@ a{
     outline: none;
     
 }
-
 .user_cover{
     margin: 20px;
 }
+
 
 /*middle section */
 .post_cover{
@@ -210,10 +210,8 @@ fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas
 /* right section */
 .right_sec{
     width:24vw;
-    /* background-color: red; */
 }
 .right_sec_div{
-    /* width:25vw; */
     min-height: 400px;
     border-radius: 10px;
     z-index: 1;
@@ -231,17 +229,14 @@ fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas
     font-size: 20px;
 }
 
-
-
 .profile_small{
     position: absolute;
     top:78px;
     left:100px;
 }
 
-.sub_right_sec
-{
-    /* width:24vw; */
+.sub_right_sec{
+
     border-top: 1px solid gray;
     display: flex;
     justify-content: space-evenly;
@@ -259,7 +254,6 @@ fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas
 .profile_cover{
     width:90vw;
     min-height:90vh;
-
 }
 
 .coverpic{
@@ -300,7 +294,7 @@ fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas
 .btn{
     color: white;
     background-color: hotpink;
-    /* width:100px; */
+    transition: all ease 1s;
 }
 
 .btn:hover {
@@ -317,10 +311,8 @@ i:hover{
 }
 
 .profile_tags{
-    padding-left:10px;
-    
+    padding-left:10px;   
 }
-
 
 .post_menu{
     background-color: #fdcbf1;
@@ -334,7 +326,6 @@ i:hover{
     background-color: white;
     text-align: center;
     height: calc(3.5rem + calc(var(--bs-border-width) * 2));
-    /* min-height: calc(3.5rem + calc(var(--bs-border-width) * 2)); */
     line-height: 52px;
     border-radius: 5px;
     cursor: pointer;
@@ -368,7 +359,6 @@ i:hover{
 .hover_div{
     position: absolute;
     width: 500px;
-    /* height:300px; */
     background-color: whitesmoke;
     z-index: 10;
 }
@@ -392,10 +382,8 @@ i:hover{
 .glow{
     font-size:30px;
     color: hotpink;
-    /* padding-bottom: 5px; */
     padding:0px 10px;
-    /* background-color: whitesmoke; */
-    /* border-top-right-radius: 20px; */
+    transition: all ease 1s;
 }
 
 .glow:hover{

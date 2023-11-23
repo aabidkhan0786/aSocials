@@ -11,14 +11,14 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const history = useNavigate();
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleRegister = () => {
     setLoading(true)
     if (password.length <= 6) {
       return alert("Password should be 6 character long!");
     }
-    if (!validator.isEmail(email)) { 
+    if (!validator.isEmail(email)) {
       return alert("Please enter valid email!");
     }
     const registerDetails = {
@@ -36,6 +36,11 @@ const Register = () => {
           <div className="box_1">
             <h2>aSoci@ls</h2>
             <p>Explore the beauty of people,place and things</p>
+            <div className='stick_bottom px-1'>
+              <p>More By A.A.K:
+                <a href="https://vid-shot-aabidkhan0786.vercel.app/" className='mx-2' target='_blank'>
+                  <u>VidShot</u></a></p>
+            </div>
           </div>
           <div className="box_2">
             <input
@@ -68,7 +73,7 @@ const Register = () => {
               <Link className="mx-1" to="/login">
                 {
                   loading ? "Signing in" : "Sign In"
-                }           
+                }
               </Link>
             </small>
           </div>
